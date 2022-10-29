@@ -1,15 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Index from "@/page/index";
-import Home from "@/components/Home";
+import { useRoutes } from "react-router-dom";
+import router from "./router";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" exact element={<Index />} />
-      <Route path="/home" exact element={<Home />} />
-    </Routes>
-  );
+  let element = useRoutes(router);
+  return <div className="App">{element}</div>;
 }
 
 export default App;

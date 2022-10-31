@@ -1,8 +1,9 @@
-import { Layout, Menu, BackTop, Button } from "antd";
+import { Layout, Menu, BackTop, Button, Avatar, Card } from "antd";
 import { RocketTwoTone } from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
+const { Meta } = Card;
 import "./layout.less";
 
 function layout() {
@@ -38,6 +39,24 @@ function layout() {
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb> */}
         <div className="layout_site_background">
+          <Card
+            style={{
+              width: 300,
+              height: 250,
+            }}
+            cover={
+              <img
+                alt="example"
+                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+              />
+            }
+          >
+            <Meta
+              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+              title="Card title"
+              description="This is the description"
+            />
+          </Card>
           <div className="App">
             <Button
               type="primary"

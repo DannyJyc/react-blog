@@ -1,4 +1,4 @@
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import { useState } from "react";
 import reactLogo from "@/assets/react.svg";
 import Home from "@/components/Home";
@@ -11,7 +11,14 @@ function index() {
 
   return (
     <Layout>
-      <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+      <Header
+        style={{
+          position: "fixed",
+          zIndex: 1,
+          width: "100%",
+          background: "#3171AE",
+        }}
+      >
         <div className="logo" />
         <Menu
           theme="dark"
@@ -21,22 +28,23 @@ function index() {
             key: String(index + 1),
             label: `nav ${index + 1}`,
           }))}
+          style={{ background: "#3171AE" }}
         />
       </Header>
       <Content
-        className="site-layout"
-        style={{ padding: "0 50px", marginTop: 64 }}
+        style={{ paddingTop: 100, display: "flex", justifyContent: "center" }}
       >
-        <Breadcrumb style={{ margin: "16px 0" }}>
+        {/* 面包屑 */}
+        {/* <Breadcrumb style={{ margin: "16px 0" }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
+        </Breadcrumb> */}
         <div
-          className="site-layout-background"
-          style={{ padding: 24, minHeight: 380 }}
+          className="site-layout-background "
+          style={{ padding: 24, minHeight: 380, width: "61.8%" }}
         >
-          <div className="App">
+          <div className="App site-layout" style={{ marginRight: 5, width: "61.8%" }}>
             <div>
               <a href="https://vitejs.dev" target="_blank">
                 <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -59,6 +67,7 @@ function index() {
               Click on the Vite and React logos to learn more
             </p>
           </div>
+          <div className="Side_Guide site-layout" style={{ marginleft: 5, width: "38.2%" }}>123</div>
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>

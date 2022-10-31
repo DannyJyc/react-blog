@@ -42,8 +42,9 @@ function layout() {
             <Button
               type="primary"
               onClick={() => {
-                navigate("/index");
+                navigate("/");
               }}
+              style={{ marginRight: "20px" }}
             >
               Index
             </Button>

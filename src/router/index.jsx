@@ -1,13 +1,11 @@
 import React, { lazy } from "react";
 import PageLoad from "../layout/pageload";
-// import Test from '@/page'
+import NoMatch from "@/layout/404.jsx";
 
 function __variableDynamicImportRuntime__(path) {
   switch (path) {
     case "":
       return import("@/layout/layout.jsx");
-    case "/layout/pageload.jsx":
-      return import("@/layout/pageload.jsx");
     case "/index":
       return import("@/components/index.jsx");
     case "/home":
@@ -38,7 +36,12 @@ let router = [
     path: "/",
     element: lazyLoad(""),
     children: [
-      { index: true, path: "/index", element: lazyLoad("/index") },
+      {
+        index: true,
+        path: "/",
+        fullPath: "/index",
+        element: lazyLoad("/index"),
+      },
       {
         name: "HOME",
         path: "/home",
@@ -47,8 +50,9 @@ let router = [
     ],
   },
   {
-    path: "/pl",
-    element: lazyLoad("/layout/pageload.jsx"),
+    name: "404",
+    path: "*",
+    element: <NoMatch />,
   },
 ];
 

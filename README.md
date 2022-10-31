@@ -60,6 +60,21 @@ See https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#l
 >>>
 >>
 > **到此react-router才算告一段落**
+>
+>2022-10-31 15:55:01继续更新关于react-router 内容
+>react-router-dom v6路由跳转好多种，这里用的是灵活性相对高一些日常做项目也常用到的一个关键方法
+>
+>**navigate使用方法**
+~~~
+import { ......, useNavigate } from "react-router-dom";
+const navigate = useNavigate();
+...
+navigate("/home");
+~~~
+---
+>在跳转路由时传递参数
+>
+> **参考：** https://blog.csdn.net/m0_54861649/article/details/123258748
 ---
 >**引入vite-plugin-style-import处理导致有过大包的问题2022-10-31 10:26:27**
 ![vite-plugin-style-import_error](/md_files/vite-plugin-style-import_version_error1.png)

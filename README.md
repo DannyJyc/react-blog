@@ -60,3 +60,10 @@ See https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#l
 >>>
 >>
 > **到此react-router才算告一段落**
+---
+>**引入vite-plugin-style-import处理导致有过大包的问题2022-10-31 10:26:27**
+![vite-plugin-style-import_error](/md_files/vite-plugin-style-import_version_error1.png)
+临时解决方案：https://github.com/vbenjs/vite-plugin-style-import/issues/77
+>
+>插件官方的github当年2月有人提过相关问题目前只能回退版本
+![vite-plugin-style-import_error](/md_files/vite-plugin-style-import_version_error.png)

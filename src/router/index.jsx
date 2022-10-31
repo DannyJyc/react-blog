@@ -1,10 +1,11 @@
 import React, { lazy } from "react";
+import PageLoad from "../layout/pageload";
 // import Test from '@/page'
 
 function __variableDynamicImportRuntime__(path) {
   switch (path) {
     case "":
-      return import("@/page");
+      return import("@/layout");
     case "/layout/pageload.jsx":
       return import("@/layout/pageload.jsx");
     default:
@@ -22,7 +23,7 @@ function __variableDynamicImportRuntime__(path) {
 const lazyLoad = (path) => {
   const Comp = lazy(() => __variableDynamicImportRuntime__(path));
   return (
-    <React.Suspense fallback={<>加载中···</>}>
+    <React.Suspense fallback={<PageLoad></PageLoad>}>
       <Comp />
     </React.Suspense>
   );

@@ -1,0 +1,58 @@
+@base_bgc: #3171ae !important;
+@box_bgc: #fff;
+.layout_base_background_color {
+  background: @base_bgc;
+}
+.layout_components_demo_fixed_logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.layout_content {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.layout_site_background {
+  display: inherit;
+  padding: 24px;
+  min-height: 2200px;
+  width: 61.8%;
+  .App {
+    width: 61.8%;
+    padding: 12px;
+    background: @box_bgc;
+  }
+  .Side_Guide {
+    width: 38.2%;
+    margin-left: 30px;
+    div {
+      background: @box_bgc;
+    }
+    .Side_Guide_top {
+      //   min-height: 120px;
+      //   max-height: 380px;
+      height: 120px;
+      padding: 12px;
+    }
+    .Side_Guide_bottom {
+      //   min-height: 120px;
+      //   max-height: 680px;
+      height: 580px;
+      padding: 12px;
+      margin-top: 30px;
+    }
+  }
+}
+.backup {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  background-color: @base_bgc;
+  color: @box_bgc;
+  text-align: center;
+  font-size: 28px;
+}

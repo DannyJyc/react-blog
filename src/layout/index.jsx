@@ -1,10 +1,11 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, BackTop } from "antd";
+import { RocketTwoTone } from "@ant-design/icons";
 import { useState } from "react";
 import reactLogo from "@/assets/react.svg";
 import Home from "@/components/Home";
 
 const { Header, Content, Footer } = Layout;
-import "@/static/style/index.css";
+import "./layout.less";
 
 function index() {
   const [count, setCount] = useState(0);
@@ -12,15 +13,16 @@ function index() {
   return (
     <Layout>
       <Header
+        className="layout_base_background_color"
         style={{
           position: "fixed",
           zIndex: 1,
           width: "100%",
-          background: "#3171AE",
         }}
       >
-        <div className="logo" />
+        <div className="layout_components_demo_fixed_logo" />
         <Menu
+          className="layout_base_background_color"
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={["2"]}
@@ -28,23 +30,17 @@ function index() {
             key: String(index + 1),
             label: `nav ${index + 1}`,
           }))}
-          style={{ background: "#3171AE" }}
         />
       </Header>
-      <Content
-        style={{ paddingTop: 100, display: "flex", justifyContent: "center" }}
-      >
+      <Content className="layout_content">
         {/* 面包屑 */}
         {/* <Breadcrumb style={{ margin: "16px 0" }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb> */}
-        <div
-          className="site-layout-background "
-          style={{ padding: 24, minHeight: 380, width: "61.8%" }}
-        >
-          <div className="App site-layout" style={{ marginRight: 5, width: "61.8%" }}>
+        <div className="layout_site_background">
+          <div className="App">
             <div>
               <a href="https://vitejs.dev" target="_blank">
                 <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -67,12 +63,20 @@ function index() {
               Click on the Vite and React logos to learn more
             </p>
           </div>
-          <div className="Side_Guide site-layout" style={{ marginleft: 5, width: "38.2%" }}>123</div>
+          <div className="Side_Guide">
+            <div className="Side_Guide_top">123</div>
+            <div className="Side_Guide_bottom">456</div>
+          </div>
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
         Ant Design ©2018 Created by Ant UED
       </Footer>
+      <BackTop>
+        <div className="backup">
+          <RocketTwoTone />
+        </div>
+      </BackTop>
     </Layout>
   );
 }

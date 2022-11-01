@@ -10,6 +10,8 @@ function __variableDynamicImportRuntime__(path) {
       return import("@/components/index.jsx");
     case "/home":
       return import("@/components/home.jsx");
+    case "/content":
+      return import("@/page/content");
     default:
       return new Promise(function (resolve, reject) {
         queueMicrotask(
@@ -46,6 +48,11 @@ let router = [
         name: "HOME",
         path: "/home",
         element: lazyLoad("/home"),
+      },
+      {
+        name: "CONTENTLIST",
+        path: "/content",
+        element: lazyLoad("/content"),
       },
     ],
   },

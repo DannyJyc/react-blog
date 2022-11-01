@@ -60,7 +60,6 @@ function layout() {
               onClick={() => {
                 navigate("/");
               }}
-              style={{ marginRight: "20px" }}
             >
               Index
             </Button>
@@ -71,6 +70,14 @@ function layout() {
               }}
             >
               Home
+            </Button>
+            <Button
+              type="primary"
+              onClick={() => {
+                navigate("/content");
+              }}
+            >
+              Content
             </Button>
             <Outlet />
           </div>

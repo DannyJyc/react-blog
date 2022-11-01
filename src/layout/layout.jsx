@@ -1,9 +1,11 @@
-import { Layout, Menu, BackTop, Button, Avatar, Card } from "antd";
-import { RocketTwoTone } from "@ant-design/icons";
+import { Layout, Menu, BackTop, Button, Avatar, Card, Divider } from "antd";
+import { RocketTwoTone, TagsOutlined, FireOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
+import Tags from "@/page/content/tags.jsx";
+import Hots from "@/page/content/hots.jsx";
 import "./layout.less";
 
 function layout() {
@@ -55,35 +57,23 @@ function layout() {
             />
           </Card>
           <div className="App layout_base_shadow">
-            <Button
-              type="primary"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Index
-            </Button>
-            <Button
-              type="primary"
-              onClick={() => {
-                navigate("/home");
-              }}
-            >
-              Home
-            </Button>
-            <Button
-              type="primary"
-              onClick={() => {
-                navigate("/content");
-              }}
-            >
-              Content
-            </Button>
             <Outlet />
           </div>
           <div className="Side_Guide">
-            <div className="Side_Guide_top layout_base_shadow">123</div>
-            <div className="Side_Guide_bottom layout_base_shadow">456</div>
+            <div className="Side_Guide_top layout_base_shadow">
+              <Divider orientation="left" plain>
+                <TagsOutlined />
+                Tags
+              </Divider>
+              <Tags />
+            </div>
+            <div className="Side_Guide_bottom layout_base_shadow">
+              <Divider orientation="left" plain>
+                <FireOutlined />
+                Hot
+              </Divider>
+              <Hots />
+            </div>
           </div>
         </div>
       </Content>

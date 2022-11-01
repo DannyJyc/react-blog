@@ -39,9 +39,7 @@ let router = [
     element: lazyLoad(""),
     children: [
       {
-        index: true,
-        path: "/",
-        fullPath: "/index",
+        path: "/index",
         element: lazyLoad("/index"),
       },
       {
@@ -50,8 +48,9 @@ let router = [
         element: lazyLoad("/home"),
       },
       {
+        index: true,
         name: "CONTENTLIST",
-        path: "/content",
+        path: "/",
         element: lazyLoad("/content"),
       },
     ],

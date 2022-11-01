@@ -40,10 +40,7 @@ function layout() {
         </Breadcrumb> */}
         <div className="layout_site_background">
           <Card
-            style={{
-              width: 300,
-              height: 250,
-            }}
+            className="Card layout_base_shadow"
             cover={
               <img
                 alt="example"
@@ -57,7 +54,7 @@ function layout() {
               description="This is the description"
             />
           </Card>
-          <div className="App">
+          <div className="App layout_base_shadow">
             <Button
               type="primary"
               onClick={() => {
@@ -78,8 +75,8 @@ function layout() {
             <Outlet />
           </div>
           <div className="Side_Guide">
-            <div className="Side_Guide_top">123</div>
-            <div className="Side_Guide_bottom">456</div>
+            <div className="Side_Guide_top layout_base_shadow">123</div>
+            <div className="Side_Guide_bottom layout_base_shadow">456</div>
           </div>
         </div>
       </Content>

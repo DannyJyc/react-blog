@@ -1,7 +1,12 @@
-import { Layout, Menu, BackTop, Button, Avatar, Card, Divider } from "antd";
-import { RocketTwoTone, TagsOutlined, FireOutlined } from "@ant-design/icons";
+import { Layout, BackTop, Button, Avatar, Card, Divider, Modal } from "antd";
+import {
+  RocketTwoTone,
+  TagsOutlined,
+  FireOutlined,
+  LoginOutlined,
+} from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
-
+import React, { useState } from "react";
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
 import Tags from "@/page/content/tags.jsx";
@@ -10,9 +15,30 @@ import "./layout.less";
 
 function layout() {
   const navigate = useNavigate();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <Layout>
+      <Modal
+        title="登 录"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        okText="登 录"
+        cancelText="取 消"
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
       <Header
         className="layout_base_background_color"
         style={{
@@ -21,17 +47,17 @@ function layout() {
           width: "100%",
         }}
       >
-        <div className="layout_components_demo_fixed_logo" />
-        <Menu
-          className="layout_base_background_color"
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={new Array(3).fill(null).map((_, index) => ({
-            key: String(index + 1),
-            label: `nav ${index + 1}`,
-          }))}
-        />
+        <div className="layout_components_demo_fixed_logo"></div>
+        <div className="layout_components_demo_fixed_sign">
+          <Button
+            type="text"
+            icon={<LoginOutlined />}
+            className="btn_login"
+            onClick={showModal}
+          >
+            登 录
+          </Button>
+        </div>
       </Header>
       <Content className="layout_content">
         {/* 面包屑 */}

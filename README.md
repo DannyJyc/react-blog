@@ -125,10 +125,15 @@ navigate("/home");
 >上述是官网译文
 >
 >然后就是按照官网给的步骤一步一步把它安装加入到自己的项目里这里项目是基于JavaScript做的所以放一下JS那部分配置的网址（https://redux.js.org/tutorials/quick-start）
->
+##### **出现问题**
 >加上之后，我想看看它在不同的组件中这个公共状态是不是同步过来了我就在我其中的一个页中只加了显示自定义的状态值寻思同步看一下，好家伙这又遇到问题了，但是按照代码现在只是临时修复过来了但是还不明所以然，这里把调整的过程记录一下
 
 ![react-domerror](/md_files/react_error1.png)
 * 【第一次遇到错误版本】https://gitee.com/husky-bear/react-blog/commit/696d68b68736ab0474babebe7473aae4c9624dca
 * 【尝试修了一下还没好】https://gitee.com/husky-bear/react-blog/commit/0362fb159463214fff640a7f68a959eacfb56ced
 * 【按照正常代码试着修了一下意外发现正常了】https://gitee.com/husky-bear/react-blog/commit/3765c9893f3d12b234d5af176e0a3bf1f577e8c9
+
+##### 问题答疑
+>人家控制台的内容里就告诉我们应该去官网里看了（而且，官网里写的很清楚）这里放一下中文的链接
+>
+>网址：https://zh-hans.reactjs.org/warnings/invalid-hook-call-warning.html

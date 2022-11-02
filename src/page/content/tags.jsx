@@ -5,8 +5,11 @@ import { TagOutlined } from "@ant-design/icons";
 // import TagsListStyle from "@/static/style/content/tags.module.less";
 
 const BTag = (props) => {
+  const count = useSelector((state) => state.counter.value);
+
   return (
     <>
+      <span>{count}</span>
       <Tag icon={<TagOutlined />} color={props.tag.color}>
         {props.tag.name}
       </Tag>
@@ -35,7 +38,6 @@ class Tags extends React.Component {
           color: "#87d068",
         },
       ],
-      count: useSelector((state) => state.counter.value),
     };
   }
   render() {
@@ -45,13 +47,7 @@ class Tags extends React.Component {
         <BTag key={this.state.tags[i].id} tag={this.state.tags[i]} />
       );
     }
-    return (
-      <div style={{ margin: "0px 12px" }}>
-        {" "}
-        <span>{this.state.count}</span>
-        {tagtemp}
-      </div>
-    );
+    return <div style={{ margin: "0px 12px" }}>{tagtemp}</div>;
   }
 }
 

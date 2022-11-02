@@ -6,6 +6,8 @@ import {
   RightOutlined,
 } from "@ant-design/icons";
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from "@/store/counterslice";
 import ContentListStyle from "@/static/style/content/index.module.less";
 const { useState } = React;
 
@@ -38,9 +40,24 @@ const itemRender = (_, type, originalElement) => {
 };
 const ContentList = () => {
   const [random] = useState();
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
   return (
     <div>
+      <button
+        aria-label="Increment value"
+        onClick={() => dispatch(increment())}
+      >
+        Increment
+      </button>
+      <span>{count}</span>
+      <button
+        aria-label="Decrement value"
+        onClick={() => dispatch(decrement())}
+      >
+        Decrement
+      </button>
       <Card bodyStyle={{ padding: "12px 24px" }}>
         <p className={ContentListStyle.content_title}>
           我是标题我是标题我是标题我是标题我

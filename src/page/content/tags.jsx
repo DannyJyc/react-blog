@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Tag } from "antd";
 import { TagOutlined } from "@ant-design/icons";
 // import TagsListStyle from "@/static/style/content/tags.module.less";
+const count = useSelector((state) => state.counter.value);
 
 const BTag = (props) => {
   return (
@@ -43,7 +45,13 @@ class Tags extends React.Component {
         <BTag key={this.state.tags[i].id} tag={this.state.tags[i]} />
       );
     }
-    return <div style={{ margin: "0px 12px" }}>{tagtemp}</div>;
+    return (
+      <div style={{ margin: "0px 12px" }}>
+        {" "}
+        <span>{this.state.count}</span>
+        {tagtemp}
+      </div>
+    );
   }
 }
 

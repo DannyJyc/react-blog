@@ -94,3 +94,41 @@ navigate("/home");
 >
 >插件官方的github当年2月有人提过相关问题目前只能回退版本
 ![vite-plugin-style-import_error](/md_files/vite-plugin-style-import_version_error.png)
+---
+>**公共状态管理**
+>
+>react不像vue有一个自己生态内的一个公共状态管理的工具（VueX），问了一些人也查了一下铺天盖地一堆，最后直接就去antd的官网看到提到了这个玩意而且他不只是只兼容react这个框架，就算没有框架也能部，凭我这40多个月的经验来看我觉得肯定是个好玩意就选redux了。
+>
+>我这第一步就是按照原有用过vuex的惯性至少得去了解一下redux怎么存取然后在拓展看一些其他七七八八的，这里我在B站上找到了一个视频讲redux还不错的视频。（考虑B站飘忽不定不知道啥时候视频就被删除的特性，我给他下载下来了）
+<video width="100%" src="./md_files/【P1】【从零开始搭建项目】20分钟讲清楚Redux全流程架构（无框架版）.flv"></video>
+>原视频链接：https://www.bilibili.com/video/BV12B4y1z7my
+>
+>看完就尝试去封装一下redux毕竟要在项目中各个页和组件中使用
+>
+>然后就遇到点小插曲我就照常安装包然后引入，哎就在这个时候出现了一点东西
+>
+>import { ~~createStore~~ } from 'redux'
+>
+>我的编辑器就给我整成这样了，鼠标指上去给我带到了redux的官网下的一个网址（其实IDE给我提示了一大堆东西我忘了保存了，最后是网址）
+>
+>网址：https://redux.js.org/tutorials/quick-start
+>
+>就是这个点进去一看这个redux toolkit是个啥啊
+>*Redux Toolkit（也称为简称“ RTK”）是我们官方推荐的编写Redux逻辑的方法。@reduxjs/Toolkit软件包围绕核心Redux软件包包裹，并包含API方法和常见依赖项，我们认为这对于构建Redux应用至关重要。Redux工具包在我们建议的最佳实践中构建，简化大多数Redux任务，防止常见错误，并使编写Redux应用程序更容易。*
+>
+>*如果您今天正在编写任何Redux逻辑，则应使用Redux Toolkit来编写该代码！*
+>
+>*RTK包括有助于简化许多常见用例的实用程序，包括商店设置，创建还原和编写不可变的更新逻辑，甚至立即创建整个状态“切片”。*
+>
+>*无论您是全新的Redux用户设置第一个项目，还是想要简化现有应用程序的经验丰富的用户，Redux Toolkit都可以帮助您更好地改善Redux代码。*
+>
+>上述是官网译文
+>
+>然后就是按照官网给的步骤一步一步把它安装加入到自己的项目里这里项目是基于JavaScript做的所以放一下JS那部分配置的网址（https://redux.js.org/tutorials/quick-start）
+>
+>加上之后，我想看看它在不同的组件中这个公共状态是不是同步过来了我就在我其中的一个页中只加了显示自定义的状态值寻思同步看一下，好家伙这又遇到问题了，但是按照代码现在只是临时修复过来了但是还不明所以然，这里把调整的过程记录一下
+
+![react-domerror](/md_files/react_error1.png)
+* 【第一次遇到错误版本】https://gitee.com/husky-bear/react-blog/commit/696d68b68736ab0474babebe7473aae4c9624dca
+* 【尝试修了一下还没好】https://gitee.com/husky-bear/react-blog/commit/0362fb159463214fff640a7f68a959eacfb56ced
+* 【按照正常代码试着修了一下意外发现正常了】https://gitee.com/husky-bear/react-blog/commit/3765c9893f3d12b234d5af176e0a3bf1f577e8c9

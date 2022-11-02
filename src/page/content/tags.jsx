@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Tag } from "antd";
 import { TagOutlined } from "@ant-design/icons";
 // import TagsListStyle from "@/static/style/content/tags.module.less";
-const count = useSelector((state) => state.counter.value);
 
 const BTag = (props) => {
   return (
@@ -36,6 +35,7 @@ class Tags extends React.Component {
           color: "#87d068",
         },
       ],
+      count: useSelector((state) => state.counter.value),
     };
   }
   render() {

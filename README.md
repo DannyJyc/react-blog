@@ -1,9 +1,9 @@
-# react-blog
+# **react-blog**
 
-#### 介绍
-搭建过程出现的问题简单记录
+### **搭建过程出现的问题简单记录**
 
->react-routerv6
+
+#### **react-routerv6**
 >>1、基础的router搭建直接参考react-router的官网就行（看好版本）
 >>
 >>2、按照以往在用vue框架搭建项目中以某一个文件中JSON对象来管理项目的路由出现了一些问题（可能是Vite独有的用以往大众的方式构建项目可能没有这么多破事）
@@ -71,12 +71,12 @@ function importLocale(locale) {
 
 >>>
 >>
-> **到此react-router才算告一段落**
+##### **到此react-router才算告一段落**
 >
 >2022-10-31 15:55:01继续更新关于react-router 内容
 >react-router-dom v6路由跳转好多种，这里用的是灵活性相对高一些日常做项目也常用到的一个关键方法
 >
->**navigate使用方法**
+##### **navigate使用方法**
 ~~~
 import { ......, useNavigate } from "react-router-dom";
 const navigate = useNavigate();
@@ -84,18 +84,18 @@ const navigate = useNavigate();
 navigate("/home");
 ~~~
 ---
->在跳转路由时传递参数
+##### 在跳转路由时传递参数
 >
 > **参考：** https://blog.csdn.net/m0_54861649/article/details/123258748
 ---
->**引入vite-plugin-style-import处理导致有过大包的问题2022-10-31 10:26:27**
+#### **引入vite-plugin-style-import处理导致有过大包的问题2022-10-31 10:26:27**
 ![vite-plugin-style-import_error](/md_files/vite-plugin-style-import_version_error1.png)
 临时解决方案：https://github.com/vbenjs/vite-plugin-style-import/issues/77
 >
 >插件官方的github当年2月有人提过相关问题目前只能回退版本
 ![vite-plugin-style-import_error](/md_files/vite-plugin-style-import_version_error.png)
 ---
->**公共状态管理**
+#### **公共状态管理**
 >
 >react不像vue有一个自己生态内的一个公共状态管理的工具（VueX），问了一些人也查了一下铺天盖地一堆，最后直接就去antd的官网看到提到了这个玩意而且他不只是只兼容react这个框架，就算没有框架也能部，凭我这40多个月的经验来看我觉得肯定是个好玩意就选redux了。
 >

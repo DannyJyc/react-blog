@@ -13,17 +13,15 @@ const BTag = (props) => {
     </>
   );
 };
-const TagJoinMiddle = (props)=>{
-    const count = useSelector((state) => state.counter.value);
-    const tagtemp = [];
-    tagtemp.push(<p>{count}</p>);
-    for (let i = 0; i < props.tags.length; i++) {
-      tagtemp.push(
-        <BTag key={props.tags[i].id} tag={props.tags[i]} />
-      );
-    }
-    return <>{tagtemp}</>
-}
+const TagJoinMiddle = (props) => {
+  const count = useSelector((state) => state.counter.value);
+  const tagtemp = [];
+//   tagtemp.push(<p key="0">{count}</p>);
+  for (let i = 0; i < props.tags.length; i++) {
+    tagtemp.push(<BTag key={props.tags[i].id} tag={props.tags[i]} />);
+  }
+  return <><div><p>{count}</p></div><div>{tagtemp}</div></>;
+};
 class Tags extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +46,7 @@ class Tags extends React.Component {
     };
   }
   render() {
-    return <TagJoinMiddle tags={this.state.tags}/>;
+    return <TagJoinMiddle tags={this.state.tags} />;
   }
 }
 

@@ -7,7 +7,8 @@ import {
 } from "@ant-design/icons";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "@/store/counterslice";
+import { decrement, increment, incrementByAmount } from "@/store/counterslice";
+import { getCookie } from "@/cookie";
 import ContentListStyle from "@/static/style/content/index.module.less";
 const { useState } = React;
 
@@ -40,9 +41,14 @@ const itemRender = (_, type, originalElement) => {
 };
 const ContentList = () => {
   const [random] = useState();
-  const count = useSelector((state) => state.counter.value);
+  let count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
-
+  if (count == 0) {
+    () => {
+      dispatch(incrementByAmount(getCookie("counter")));
+    };
+    count = useSelector((state) => state.counter.value);
+  }
   return (
     <div>
       <button

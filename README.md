@@ -137,3 +137,51 @@ navigate("/home");
 >人家控制台的内容里就告诉我们应该去官网里看了（而且，官网里写的很清楚）这里放一下中文的链接
 >
 >网址：https://zh-hans.reactjs.org/warnings/invalid-hook-call-warning.html
+
+#### 安装配置react-cookie
+>这个地方其实也没啥说的就照常安装然后封装一些常用的方法就完了
+
+`npm install react-cookies -s  `
+>然后就参照我这一次的提交查看都加了啥就完了
+https://gitee.com/husky-bear/react-blog/commit/ecc29dc8c5f4c6a6c107d51a9c0e29fd56e79d52
+##### 无关的小问题
+>因为之前页面出现的效果跟当时写的和预想的效果一致也没什么异常就一直没留意浏览器控制台的报错信息这把新增了一个包进来就寻思打开看看然后发现了
+
+`Each child in a list should have a unique "key" prop.`
+>这个玩意，根据控制台给出的信息精确地定位到了下面这个地方
+
+~~~
+...
+const TagJoinMiddle = (props)=>{
+    const count = useSelector((state) => state.counter.value);
+    const tagtemp = [];
+    tagtemp.push(<p>{count}</p>);
+    for (let i = 0; i < props.tags.length; i++) {
+      tagtemp.push(
+        <BTag key={props.tags[i].id} tag={props.tags[i]} />
+      );
+    }
+    return <>{tagtemp}</>
+}
+...
+~~~
+>这里注意`tagtemp`这个变量在这段里他是一个承载react自己对于dom数据类型的一个数据集合，但是注意看第一个`push`的时候`<p>`标签我没加上`key`
+>
+>在vue里我们如果想要循环dom可以直接在标签上加上`v-for`的属性然后再对循环输出的虚拟dom元素加上`key`值
+>
+>但是在react下没有`v-for`这类的东西，但是我们可以直接按照上面那端代码的方式先去组要循环输出`dom`的数据对象然后再`render`函数最后输出即可，那么就好理解了原先我们输出的时候需要加什么，虽然换了方式但是也是循环输出所以该有的东西不能没有，这里就是对于第一个`<p>`标签少了`key`的属性这样就解决了。
+
+>然后是第二个问题（已解决，但是没理解）
+>加上cookie以后想跟已有的公共状态管理(redux)进行联动一下看看是不是好用的因为只有公共状态管理的话刷新页面状态会丢失（我可不想登陆完刷新在登录），就出现了以下问题。
+~~~
+Cannot update a component (`TagJoinMiddle`) while rendering a 
+different component (`ContentList`). To locate the bad setState() 
+call inside `ContentList`
+~~~
+>刚出现这个问题的时候我都麻了，我看着这个错误反馈我一顿查tag.jsx这个文件啊但是就是看不出什么问题，直到我意识到是因为加了初始化页面的时候判断状态管理里的值是不是初始值然后给cookie里的值重新付给状态，这个操作以后，才出现的问题。我就试着注释了一下，果然他没了。然后就按照这一个星期前看react官方文档和这一周多的经验尝试着修复了一下。他就好了。（但是我不理解。。。）
+
+>出错前
+![vite-plugin-style-import_error](/md_files/redux_error_befor.jpg)
+
+>出错后
+![vite-plugin-style-import_error](/md_files/redux_error_later.jpg)

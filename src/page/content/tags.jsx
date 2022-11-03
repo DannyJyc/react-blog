@@ -5,18 +5,25 @@ import { TagOutlined } from "@ant-design/icons";
 // import TagsListStyle from "@/static/style/content/tags.module.less";
 
 const BTag = (props) => {
-  const count = useSelector((state) => state.counter.value);
-
   return (
     <>
-      <span>{count}</span>
       <Tag icon={<TagOutlined />} color={props.tag.color}>
         {props.tag.name}
       </Tag>
     </>
   );
 };
-
+const TagJoinMiddle = (props)=>{
+    const count = useSelector((state) => state.counter.value);
+    const tagtemp = [];
+    tagtemp.push(<p>{count}</p>);
+    for (let i = 0; i < props.tags.length; i++) {
+      tagtemp.push(
+        <BTag key={props.tags[i].id} tag={props.tags[i]} />
+      );
+    }
+    return <>{tagtemp}</>
+}
 class Tags extends React.Component {
   constructor(props) {
     super(props);
@@ -41,13 +48,7 @@ class Tags extends React.Component {
     };
   }
   render() {
-    const tagtemp = [];
-    for (let i = 0; i < this.state.tags.length; i++) {
-      tagtemp.push(
-        <BTag key={this.state.tags[i].id} tag={this.state.tags[i]} />
-      );
-    }
-    return <div style={{ margin: "0px 12px" }}>{tagtemp}</div>;
+    return <TagJoinMiddle tags={this.state.tags}/>;
   }
 }
 

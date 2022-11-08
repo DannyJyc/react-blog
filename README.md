@@ -185,3 +185,17 @@ call inside `ContentList`
 
 >出错后
 ![vite-plugin-style-import_error](/md_files/redux_error_later.jpg)
+#### Antd Dropdown组件使用
+##### 出现问题
+`React.Children.only expected to receive a single React element child.`
+>问题如上，截图如下
+![antd_dropdown_using_error](/md_files/antd_dropdwon_using_error.png)
+
+>看到这个问题的第一件事肯定又扔到baidu里去查但是查完以后说是
+>>组件内部最外层只能接受一个元素，而代码中有多个元素，所以报错。
+>我也没放什么其他的东西啊就按照文档引入了一下dropdown的组件，没有什么头绪，结果又去回去看人家官方文档中对该组件的描述一上来就看到以下这段内容
+![dropdown_doc_details](/md_files/dropdown_doc_details.png)
+>也是碰巧我用的就是他说的这个新语法（会不会是版本的原因呢）于是去查了一下项目中antd的版本
+>
+>![project_antd_version](/md_files/project_antd_version.png)
+>果真是 ≤ 4.24所以就按照文档中把dropdown那部分的语法修改了一下就好了

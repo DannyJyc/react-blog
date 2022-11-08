@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";   
 import { Tag } from "antd";
 import { TagOutlined } from "@ant-design/icons";
 // import TagsListStyle from "@/static/style/content/tags.module.less";
@@ -14,13 +14,13 @@ const BTag = (props) => {
   );
 };
 const TagJoinMiddle = (props) => {
-  const count = useSelector((state) => state.counter.value);
+  // const count = useSelector((state) => state.counter.value);
   const tagtemp = [];
 //   tagtemp.push(<p key="0">{count}</p>);
   for (let i = 0; i < props.tags.length; i++) {
     tagtemp.push(<BTag key={props.tags[i].id} tag={props.tags[i]} />);
   }
-  return <><div><p>{count}</p></div><div>{tagtemp}</div></>;
+  return <><div>{tagtemp}</div></>;
 };
 class Tags extends React.Component {
   constructor(props) {

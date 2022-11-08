@@ -41,13 +41,14 @@ const itemRender = (_, type, originalElement) => {
 };
 const ContentList = () => {
   const [random] = useState();
-  let count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
+  let count = useSelector((state) => state.counter.value);
   if (count == 0) {
+    console.log("cookie value",getCookie("counter"));
     () => {
       dispatch(incrementByAmount(getCookie("counter")));
     };
-    count = useSelector((state) => state.counter.value);
+    // count = useSelector((state) => state.counter.value);
   }
   return (
     <div>

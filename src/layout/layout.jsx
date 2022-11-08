@@ -1,44 +1,33 @@
-import { Layout, BackTop, Button, Avatar, Card, Divider, Modal } from "antd";
+import { Layout, BackTop, Avatar, Card, Divider } from "antd";
 import {
   RocketTwoTone,
   TagsOutlined,
   FireOutlined,
-  LoginOutlined,
 } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 const { Header, Content, Footer } = Layout;
 const { Meta } = Card;
 import Tags from "@/page/content/tags.jsx";
 import Hots from "@/page/content/hots.jsx";
+import Login from "./login.jsx";
+import AccountMenu from "./account.jsx";
 import "./layout.less";
+
+const LoginedStatus = () => {
+  const count = useSelector((state) => state.counter.value);
+  if (count > 0) {
+    return <AccountMenu/>
+  } else {
+    return <Login/>
+  }
+};
 
 function layout() {
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
   return (
     <Layout>
-      <Modal
-        title="登 录"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        okText="登 录"
-        cancelText="取 消"
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
       <Header
         className="layout_base_background_color"
         style={{
@@ -49,14 +38,7 @@ function layout() {
       >
         <div className="layout_components_demo_fixed_logo"></div>
         <div className="layout_components_demo_fixed_sign">
-          <Button
-            type="text"
-            icon={<LoginOutlined />}
-            className="btn_login"
-            onClick={showModal}
-          >
-            登 录
-          </Button>
+          <LoginedStatus></LoginedStatus>
         </div>
       </Header>
       <Content className="layout_content">

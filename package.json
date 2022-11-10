@@ -1,7 +1,7 @@
 {
   "name": "my-blog",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.12.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,6 +15,7 @@
     "react": "^18.2.0",
     "react-cookies": "^0.1.1",
     "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.3",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2"
   },

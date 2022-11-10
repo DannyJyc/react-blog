@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { decrement, increment, incrementByAmount } from "@/store/counterslice";
 import { getCookie } from "@/cookie";
 import ContentListStyle from "@/static/style/content/index.module.less";
@@ -40,6 +41,7 @@ const itemRender = (_, type, originalElement) => {
   return originalElement;
 };
 const ContentList = () => {
+  const navigate = useNavigate();
   const [random] = useState();
   const dispatch = useDispatch();
   let count = useSelector((state) => state.counter.value);
@@ -66,7 +68,7 @@ const ContentList = () => {
         Decrement
       </button>
       <Card bodyStyle={{ padding: "12px 24px" }}>
-        <p className={ContentListStyle.content_title}>
+        <p className={ContentListStyle.content_title} onClick={()=>{navigate("/detail");}}>
           我是标题我是标题我是标题我是标题我
         </p>
         <div className={ContentListStyle.content_details}>

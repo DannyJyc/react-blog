@@ -12,10 +12,12 @@
     "@ant-design/icons": "^4.7.0",
     "@reduxjs/toolkit": "^1.8.6",
     "antd": "^4.23.6",
+    "dompurify": "^2.4.1",
     "react": "^18.2.0",
     "react-cookies": "^0.1.1",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
+    "react-quill": "^2.0.0",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2"
   },

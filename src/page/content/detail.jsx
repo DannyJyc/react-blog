@@ -7,7 +7,10 @@ import quillEmoji from "quill-emoji";
 import "quill-emoji/dist/quill-emoji.css";
 import { ImageDrop } from "quill-image-drop-module";
 const { EmojiBlot, ShortNameEmoji, ToolbarEmoji, TextAreaEmoji } = quillEmoji;
+import hljs from "highlight.js";
+import "highlight.js/styles/github-dark.css";
 import purify from "dompurify";
+
 Quill.register(
   {
     "formats/emoji": EmojiBlot,
@@ -19,7 +22,11 @@ Quill.register(
   },
   true
 );
+
 const ContentDetail = () => {
+  hljs.configure({
+    languages: ["javascript", "ruby", "python", "rust"],
+  });
   const modules = {
     toolbar: {
       container: [
@@ -32,6 +39,7 @@ const ContentDetail = () => {
           { indent: "-1" },
           { indent: "+1" },
         ],
+        ["code-block"],
         ["link", "image"], // a链接和图片的显示
         [{ align: [] }],
         [

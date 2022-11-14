@@ -13,6 +13,8 @@
     "@reduxjs/toolkit": "^1.8.6",
     "antd": "^4.23.6",
     "dompurify": "^2.4.1",
+    "quill-emoji": "^0.2.0",
+    "quill-image-drop-module": "^1.0.3",
     "react": "^18.2.0",
     "react-cookies": "^0.1.1",
     "react-dom": "^18.2.0",

@@ -1,4 +1,4 @@
-# **react-blog**
+# **react-blog（已同步github）**
 
 ### **搭建过程出现的问题简单记录**
 

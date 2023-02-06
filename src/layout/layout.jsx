@@ -16,8 +16,8 @@ import AccountMenu from "./account.jsx";
 import "./layout.less";
 
 const LoginedStatus = () => {
-  const count = useSelector((state) => state.counter.value);
-  if (count > 0) {
+  const token = useSelector((state) => state.token.value);
+  if (token.length > 0) {
     return <AccountMenu/>
   } else {
     return <Login/>

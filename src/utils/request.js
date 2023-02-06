@@ -1,46 +1,11 @@
 import axios from "axios";
-import { MessageBox, Message } from "element-ui";
-import { notification } from "antd";
+import { message } from 'antd';
 import store from "@/store";
-import { getToken } from "@/utils/auth";
+import { useSelector } from "react-redux";
 
-const [api] = notification.useNotification();
-const confirmReLogin = (key) => {
-  api.destroy(key);
-  store.dispatch("user/resetToken").then(() => {
-    location.reload();
-  });
-};
-const openNotification = () => {
-  const key = `open${Date.now()}`;
-  const btn = (
-    <Space>
-      <Button type="link" size="small" onClick={() => api.destroy()}>
-        取消
-      </Button>
-      <Button type="primary" size="small" onClick={() => confirmReLogin(key)}>
-        重新登录
-      </Button>
-    </Space>
-  );
-  api.open({
-    message: "确 认 注 销",
-    description: "您已登出，您可以取消以留在此页面，或重新登录。",
-    btn,
-    key,
-    onClose: close,
-  });
-};
-const openNormalNotification = (message, description) => {
-  api.info({
-    message,
-    description,
-    placement: "topRight",
-  });
-};
-// create an axios instance
+// axios instance
 const service = axios.create({
-  baseURL: "http://localhost:5051", // url = base url + request url
+  baseURL: "https://localhost:44370", // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000, // request timeout
 });
@@ -50,12 +15,12 @@ service.interceptors.request.use(
   (config) => {
     // do something before request is sent
 
-    if (store.getters.token) {
-      // let each request carry token
-      // ['X-Token'] is a custom headers key
-      // please modify it according to the actual situation
-      config.headers["X-Token"] = getToken();
-    }
+    // if (store.getters.token) {
+    //   // let each request carry token
+    //   // ['Authorization'] is a custom headers key
+    //   // please modify it according to the actual situation
+    //   config.headers["Authorization"] = `Bearer ${token}`;
+    // }
     return config;
   },
   (error) => {
@@ -79,14 +44,13 @@ service.interceptors.response.use(
    */
   (response) => {
     const res = response.data;
-
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 200) {
-      openNormalNotification("警告", res.message || "Error");
+      message.warning(res.message);
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 508 || res.code === 512 || res.code === 514) {
         // to re-login
-        openNotification();
+        message.warning("Token Error");
       }
       return Promise.reject(new Error(res.message || "Error"));
     } else {
@@ -95,7 +59,7 @@ service.interceptors.response.use(
   },
   (error) => {
     console.log("err" + error); // for debug
-    openNormalNotification("警告", error.message);
+    message.error(error);
     return Promise.reject(error);
   }
 );

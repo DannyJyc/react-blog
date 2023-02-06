@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setCookie } from "@/cookie";
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const tokenSlice = createSlice({
+  name: "token",
   initialState: {
-    value: 0,
+    value: "123jyc",
   },
   reducers: {
     increment: (state) => {
@@ -13,23 +13,20 @@ export const counterSlice = createSlice({
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
       state.value += 1;
-      setCookie("counter", state.value);
+      setCookie("token", state.value);
     },
     decrement: (state) => {
       state.value -= 1;
-      setCookie("counter", state.value);
+      setCookie("token", state.value);
     },
-    incrementByAmount: (state, action) => {
-      debugger;
-      state.value +=
-        typeof action.payload == "string"
-          ? parseInt(action.payload)
-          : action.payload;
+    setToken: (state, action) => {
+      state.value = action.payload;
+      setCookie("token", state.value);
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, setToken } = tokenSlice.actions;
 
-export default counterSlice.reducer;
+export default tokenSlice.reducer;

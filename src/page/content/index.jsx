@@ -8,8 +8,9 @@ import {
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { decrement, increment, incrementByAmount } from "@/store/counterslice";
+import { decrement, increment, setToken } from "@/store/tokenslice";
 import { getCookie } from "@/cookie";
+import { getAll } from "@/api/blog.js";
 import ContentListStyle from "@/static/style/content/index.module.less";
 const { useState } = React;
 
@@ -40,43 +41,26 @@ const itemRender = (_, type, originalElement) => {
   }
   return originalElement;
 };
-const ContentList = () => {
+const ItemsMoudle = (props) => {
   const navigate = useNavigate();
-  const [random] = useState();
-  const dispatch = useDispatch();
-  let count = useSelector((state) => state.counter.value);
-  if (count == 0) {
-    console.log("cookie value",getCookie("counter"));
-    () => {
-      dispatch(incrementByAmount(getCookie("counter")));
-    };
-    // count = useSelector((state) => state.counter.value);
-  }
+  const { data } = props;
   return (
-    <div>
-      <button
-        aria-label="Increment value"
-        onClick={() => dispatch(increment())}
-      >
-        Increment
-      </button>
-      <span>{count}</span>
-      <button
-        aria-label="Decrement value"
-        onClick={() => dispatch(decrement())}
-      >
-        Decrement
-      </button>
-      <Card bodyStyle={{ padding: "12px 24px" }}>
-        <p className={ContentListStyle.content_title} onClick={()=>{navigate("/detail");}}>
-          我是标题我是标题我是标题我是标题我
+    <>
+      <Card className={ContentListStyle.antd_card__patch}>
+        <p
+          className={ContentListStyle.content_title}
+          onClick={() => {
+            navigate("/detail");
+          }}
+        >
+          {data.b_Title}
         </p>
         <div className={ContentListStyle.content_details}>
           <div>
             <Image
               width={100}
               height={100}
-              src={`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?${random}`}
+              src={`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?1`}
               placeholder={
                 <Image
                   preview={false}
@@ -105,6 +89,61 @@ const ContentList = () => {
         </div>
         <p>2022-11-1 11:53:55</p>
       </Card>
+    </>
+  );
+};
+class Items extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contentItems: [],
+    };
+  }
+
+  componentDidMount() {
+    getAll().then((res) => {
+      console.log("数据获取", res);
+      this.setState({ contentItems: res.data });
+    });
+  }
+
+  render() {
+    const { contentItems } = this.state;
+    return (
+      <>
+        {contentItems.map((p) => (
+          <ItemsMoudle data={p} key={p.id}></ItemsMoudle>
+        ))}
+      </>
+    );
+  }
+}
+const ContentList = () => {
+  const dispatch = useDispatch();
+  let token = useSelector((state) => state.token.value);
+  if (token.length <= 0) {
+    console.log("cookie value", getCookie("token"));
+    () => {
+      dispatch(setToken(getCookie("token")));
+    };
+    // count = useSelector((state) => state.counter.value);
+  }
+  return (
+    <div>
+      <button
+        aria-label="Increment value"
+        onClick={() => dispatch(increment())}
+      >
+        Increment
+      </button>
+      <span>{token}</span>
+      <button
+        aria-label="Decrement value"
+        onClick={() => dispatch(decrement())}
+      >
+        Decrement
+      </button>
+      <Items />
       <Divider style={{ margin: "12px 0" }} />
       <Pagination
         simple

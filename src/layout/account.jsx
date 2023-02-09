@@ -23,14 +23,14 @@ import quillEmoji from "quill-emoji";
 import "quill-emoji/dist/quill-emoji.css";
 import { ImageDrop } from "quill-image-drop-module";
 const { EmojiBlot, ShortNameEmoji, ToolbarEmoji, TextAreaEmoji } = quillEmoji;
-import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
 import { useState } from "react";
+import { getUrl } from "@/utils/baseurl";
 
 const uploadProps = {
   name: "file",
   multiple: true,
-  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+  action: `${getUrl()}/api/file/ImgUpload`,
   onChange(info) {
     const { status } = info.file;
     if (status !== "uploading") {

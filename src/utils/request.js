@@ -1,11 +1,12 @@
 import axios from "axios";
 import { message } from 'antd';
+import { getUrl } from './baseurl';
 import store from "@/store";
 import { useSelector } from "react-redux";
 
 // axios instance
 const service = axios.create({
-  baseURL: "https://localhost:44370", // url = base url + request url
+  baseURL: getUrl(), // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000, // request timeout
 });
